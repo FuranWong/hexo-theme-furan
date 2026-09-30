@@ -6,16 +6,17 @@ html(lang=config.language || 'en')
   body
     include partial/header.pug
 
-    .layout
-      .layout__sidebar
-        include partial/sidebar.pug
+    .page-content
+      .layout
+        .layout__sidebar
+          include partial/sidebar.pug
 
-      main.layout__main
-        != body
+        main.layout__main
+          != body
 
-    if is_post()
-      .layout__giscus
-        include partial/giscus.pug
+      if is_post()
+        .layout__giscus
+          include partial/giscus.pug
 
     include partial/footer.pug
 

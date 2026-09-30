@@ -38,15 +38,33 @@ header.header
               span.header__nav-label= label
 
     .header__actions
-      .settings-dropdown(data-settings)
+      -
+        var wallpaperData = []
+        if (theme.wallpaper && theme.wallpaper.enable && theme.wallpaper.list) {
+          theme.wallpaper.list.forEach(function(wp) {
+            if (wp.name) wallpaperData.push({ name: wp.name, url: wp.url ? url_for(wp.url) : '', thumb: wp.thumb ? url_for(wp.thumb) : '' })
+          })
+        }
+        var defaultWallpaperName = (theme.wallpaper && theme.wallpaper.default_wallpaper) ? theme.wallpaper.default_wallpaper : ''
+        var defaultWallpaperIdx = 0
+        if (defaultWallpaperName && wallpaperData.length > 0) {
+          for (var di = 0; di < wallpaperData.length; di++) {
+            if (wallpaperData[di].name === defaultWallpaperName) {
+              defaultWallpaperIdx = di
+              break
+            }
+          }
+        }
+        var wallpapersPerPage = 12
+        var totalWallpaperPages = Math.ceil(wallpaperData.length / wallpapersPerPage)
+
+      .settings-dropdown(data-settings data-wallpapers=JSON.stringify(wallpaperData) data-default-wallpaper-index=defaultWallpaperIdx)
         button.btn.btn--icon(
           data-settings-toggle
           aria-label=__('settings.label')
           aria-expanded="false"
         )
-          svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
-            circle(cx="12" cy="12" r="3")
-            path(d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z")
+          i.fas.fa-gear
 
         nav.settings-dropdown__panel(data-settings-panel role="menu")
           .settings-dropdown__group
@@ -72,6 +90,35 @@ header.header
                   aria-label=color
                 )
                   span.settings-dropdown__accent-dot(style=`background: var(--ctp-${color})`)
+
+          if wallpaperData.length > 0
+            .settings-dropdown__group(data-wallpaper-group)
+              span.settings-dropdown__label= __('settings.wallpaper')
+              .settings-dropdown__row.settings-dropdown__row--wallpapers(data-wallpaper-grid)
+                each wp, idx in wallpaperData
+                  button.settings-dropdown__wallpaper-btn(
+                    data-wallpaper-index=idx
+                    data-wallpaper-page=Math.floor(idx / wallpapersPerPage)
+                    role="menuitemradio"
+                    aria-checked=(idx === defaultWallpaperIdx ? 'true' : 'false')
+                    aria-label=wp.name
+                  )
+                    if wp.thumb
+                      img.settings-dropdown__wallpaper-thumb(src=wp.thumb alt='' loading="lazy")
+              if totalWallpaperPages > 1
+                .settings-dropdown__wallpaper-pagination(data-wallpaper-pagination)
+                  button.settings-dropdown__wallpaper-page-btn(
+                    data-wallpaper-prev
+                    disabled
+                    aria-label=__('pagination.prev')
+                  )
+                    i.fas.fa-chevron-left
+                  span.settings-dropdown__wallpaper-page-info(data-wallpaper-page-info)= '1 / ' + totalWallpaperPages
+                  button.settings-dropdown__wallpaper-page-btn(
+                    data-wallpaper-next
+                    aria-label=__('pagination.next')
+                  )
+                    i.fas.fa-chevron-right
 
       button.btn.btn--icon(data-mobile-nav-toggle aria-label=__('menu.toggle') aria-expanded="false")
         svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")

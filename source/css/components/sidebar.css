@@ -4,6 +4,12 @@
   gap: var(--space-md);
   width: var(--sidebar-width);
   flex-shrink: 0;
+  background: color-mix(in srgb, var(--bg-card) 75%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid color-mix(in srgb, var(--border-light) 60%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
 }
 
 .sidebar__avatar {

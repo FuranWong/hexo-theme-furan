@@ -1,3 +1,13 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+}
+
 .layout {
   display: flex;
   max-width: calc(var(--sidebar-width) + var(--content-max-width) + var(--space-2xl) * 2);
@@ -24,10 +34,11 @@
 }
 
 .footer {
-  max-width: calc(var(--sidebar-width) + var(--content-max-width) + var(--space-2xl) * 2);
-  margin: 0 auto;
   padding: var(--space-xl);
-  border-top: 1px solid var(--border-light);
+  background: color-mix(in srgb, var(--bg-card) 75%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid color-mix(in srgb, var(--border-light) 60%, transparent);
   text-align: center;
   font-size: 0.8125rem;
   color: var(--text-muted);

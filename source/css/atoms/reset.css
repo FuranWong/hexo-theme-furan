@@ -12,7 +12,11 @@ html {
 }
 
 body {
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
+  background-image: var(--wallpaper-url, none);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-sans);
   line-height: 1.6;

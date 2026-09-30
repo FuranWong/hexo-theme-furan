@@ -35,3 +35,16 @@ theme:
   light: Light
   dark: Dark
   switch: Switch Theme
+
+settings:
+  label: Settings
+  theme: Theme
+  accent: Accent
+  wallpaper: Wallpaper
+
+pagination:
+  prev: Previous page
+  next: Next page
+
+menu:
+  toggle: Toggle Menu

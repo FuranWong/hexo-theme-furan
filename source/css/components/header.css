@@ -7,11 +7,12 @@
   height: var(--header-height);
   width: calc(100% - var(--space-xl));
   max-width: calc(var(--sidebar-width) + var(--content-max-width));
-  background: var(--bg-secondary);
+  background: color-mix(in srgb, var(--bg-secondary) 75%, transparent);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border-radius: 999px;
   box-shadow: 0 4px 20px var(--shadow-color);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .header__inner {

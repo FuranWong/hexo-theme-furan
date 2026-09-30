@@ -77,6 +77,21 @@ footer:
   powered_by: true
 
 # ===============
+# Wallpaper
+# name:  display name in settings panel
+# url:   image URL (supports Hexo url_for resolution)
+# thumb: preview thumbnail URL shown in settings panel (optional, supports Hexo url_for resolution)
+# default_wallpaper: initial wallpaper name on first visit
+# ===============
+wallpaper:
+  enable: false
+  default_wallpaper: ''
+  list:
+    - name: None
+      url: ''
+      thumb: ''
+
+# ===============
 # Miscellaneous
 # ===============
 favicon: /favicon.png
