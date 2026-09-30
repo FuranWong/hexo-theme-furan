@@ -1,0 +1,29 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.pagination__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.pagination__link:hover {
+  color: var(--accent);
+}
+
+.pagination__link--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.pagination__current {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}

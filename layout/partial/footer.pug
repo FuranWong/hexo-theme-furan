@@ -1,0 +1,13 @@
+footer.footer
+  if theme.footer.copyright
+    p= theme.footer.copyright
+  else
+    p
+      span &copy; #{theme.footer.since}
+      if new Date().getFullYear() > theme.footer.since
+        span &ndash; #{new Date().getFullYear()}
+      span  #{config.author}
+
+  if theme.footer.powered_by
+    p.mt-sm
+      != __('footer.powered_by', '<a class="link link--muted" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>')

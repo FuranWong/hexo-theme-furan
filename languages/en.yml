@@ -1,0 +1,37 @@
+home: Home
+archives: Archives
+categories: Categories
+tags: Tags
+about: About
+search: Search
+
+prev: Prev
+next: Next
+
+post:
+  word_count: '%s words'
+  reading_time: '%s min'
+  read_more: Read More
+  copyright:
+    author: Author
+    link: Link
+    license: License
+    published: Published
+    updated: Updated
+
+page:
+  tags: Tags
+  category: Category
+  tag_cloud: Tag Cloud
+
+footer:
+  powered_by: 'Powered by %s'
+
+comment:
+  title: Comments
+  placeholder: Leave a comment
+
+theme:
+  light: Light
+  dark: Dark
+  switch: Switch Theme

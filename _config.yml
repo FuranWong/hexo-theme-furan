@@ -1,0 +1,83 @@
+# ===============
+# Appearance
+# ===============
+appearance:
+  default_flavor: macchiato
+  default_accent: pink
+
+# ===============
+# Profile
+# ===============
+profile:
+  avatar: /images/Avatar.jpg
+  name: Furan Wong
+  bio: 喵喵喵
+  social:
+    github: https://github.com/FuranWong
+    twitter: https://x.com/FuranWong
+    email: 'mailto:'
+
+# ===============
+# Header
+# ===============
+header:
+  logo: /images/Avatar.jpg
+  logo_dark: /images/Avatar.jpg
+  title: '芙兰的温暖小窝'
+
+# ===============
+# Navigation Menu
+# Icon names use Font Awesome 6 Free (solid): home box-archive tags folder user link
+# Two formats:
+#   Simple:   Label: /path
+#   Extended:  Label:
+#               path: /path
+#               icon: icon-name
+# ===============
+menu:
+  Home:
+    path: /
+    icon: home
+  Archives:
+    path: /archives
+    icon: box-archive
+
+# ===============
+# Comment (Giscus)
+# ===============
+giscus:
+  enable: false
+  repo:
+  repo_id:
+  category: Announcements
+  category_id:
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  input_position: bottom
+  lang: zh-CN
+
+# ===============
+# Post
+# ===============
+post:
+  fancybox: true
+  prismjs:
+    theme: default
+  word_count: true
+  reading_time: true
+
+# ===============
+# Footer
+# ===============
+footer:
+  since: 2024
+  copyright: ''
+  powered_by: true
+
+# ===============
+# Miscellaneous
+# ===============
+favicon: /favicon.png
+rss: /atom.xml

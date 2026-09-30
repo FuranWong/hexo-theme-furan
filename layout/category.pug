@@ -1,0 +1,13 @@
+---
+layout: layout
+---
+.post-list
+  each post in page.posts.toArray()
+    a.post-card.card.card--hoverable(href=url_for(post.path))
+      h2.post-card__title= post.title
+      .post-card__meta
+        time(datetime=post.date.toISOString())= date(post.date, 'YYYY-MM-DD')
+        if post.tags.length
+          span= post.tags.map(t => '#' + t.name).join(' ')
+
+include partial/pagination.pug

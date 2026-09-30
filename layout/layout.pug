@@ -1,0 +1,24 @@
+doctype html
+html(lang=config.language || 'en')
+  head
+    include partial/head.pug
+
+  body
+    include partial/header.pug
+
+    .layout
+      .layout__sidebar
+        include partial/sidebar.pug
+
+      main.layout__main
+        != body
+
+    if is_post()
+      .layout__giscus
+        include partial/giscus.pug
+
+    include partial/footer.pug
+
+    script(src=url_for('js/main.js'))
+    script(src=url_for('js/settings-panel.js'))
+    script(src=url_for('js/mobile-nav.js'))

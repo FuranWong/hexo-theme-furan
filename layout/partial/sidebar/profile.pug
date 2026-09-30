@@ -1,0 +1,6 @@
+.card.card--flat.p-lg
+  if theme.profile.avatar
+    img.sidebar__avatar(src=url_for(theme.profile.avatar) alt=theme.profile.name)
+  h2.sidebar__name.mt-md= theme.profile.name
+  if theme.profile.bio
+    p.sidebar__bio.mt-sm= theme.profile.bio

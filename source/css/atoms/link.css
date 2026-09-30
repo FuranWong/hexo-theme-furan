@@ -1,0 +1,22 @@
+.link {
+  color: var(--accent);
+  transition: opacity 0.2s;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.link--underline {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link--muted {
+  color: var(--text-secondary);
+}
+
+.link--muted:hover {
+  color: var(--accent);
+  opacity: 1;
+}

@@ -1,0 +1,25 @@
+if page.prev || page.next
+  nav.pagination.card.card--flat.p-md
+    if page.prev
+      a.pagination__link(href=url_for(page.prev.path))
+        svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+          polyline(points="15 18 9 12 15 6")
+        span= __('prev')
+    else
+      span.pagination__link.pagination__link--disabled
+        svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+          polyline(points="15 18 9 12 15 6")
+        span= __('prev')
+
+    span.pagination__current= page.current + ' / ' + page.total
+
+    if page.next
+      a.pagination__link(href=url_for(page.next.path))
+        span= __('next')
+        svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+          polyline(points="9 18 15 12 9 6")
+    else
+      span.pagination__link.pagination__link--disabled
+        span= __('next')
+        svg(width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+          polyline(points="9 18 15 12 9 6")

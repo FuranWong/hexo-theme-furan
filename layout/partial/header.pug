@@ -1,0 +1,80 @@
+header.header
+  .header__inner
+    .header__brand
+      if theme.header && theme.header.logo
+        img.header__logo(
+          src=url_for(theme.header.logo)
+          alt=theme.header.title || config.title
+          data-header-logo
+        )
+        if theme.header.logo_dark
+          img.header__logo.header__logo--dark(
+            src=url_for(theme.header.logo_dark)
+            alt=theme.header.title || config.title
+            data-header-logo-dark
+          )
+      a.header__title(href=url_for('/'))
+        if theme.header && theme.header.title
+          = theme.header.title
+        else
+          = config.title
+
+    nav.header__nav
+      if theme.menu
+        each item, label in theme.menu
+          -
+            var navPath = typeof item === 'string' ? item : item.path
+            var navIcon = typeof item === 'string' ? null : item.icon
+            var isActive = navPath === '/'
+              ? (page.path === '' || page.path === 'index.html')
+              : page.path.startsWith(navPath.replace('/', ''))
+          if navPath && label
+            a.header__nav-link(
+              class={'header__nav-link--active': isActive}
+              href=url_for(navPath)
+            )
+              if navIcon
+                i.fas(class=`fa-${navIcon}`)
+              span.header__nav-label= label
+
+    .header__actions
+      .settings-dropdown(data-settings)
+        button.btn.btn--icon(
+          data-settings-toggle
+          aria-label=__('settings.label')
+          aria-expanded="false"
+        )
+          svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+            circle(cx="12" cy="12" r="3")
+            path(d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z")
+
+        nav.settings-dropdown__panel(data-settings-panel role="menu")
+          .settings-dropdown__group
+            span.settings-dropdown__label= __('settings.theme')
+            .settings-dropdown__row
+              each flavor, i in ['latte', 'frappe', 'macchiato', 'mocha']
+                button.settings-dropdown__theme-btn(
+                  data-theme-value=flavor
+                  role="menuitemradio"
+                  aria-checked=(i === 0 ? 'true' : 'false')
+                )
+                  span.settings-dropdown__theme-dot(class=`settings-dropdown__theme-dot--${flavor}`)
+                  span= flavor.charAt(0).toUpperCase() + flavor.slice(1)
+
+          .settings-dropdown__group
+            span.settings-dropdown__label= __('settings.accent')
+            .settings-dropdown__row.settings-dropdown__row--accents
+              each color in ['rosewater', 'flamingo', 'pink', 'mauve', 'red', 'maroon', 'peach', 'yellow', 'green', 'teal', 'sky', 'sapphire', 'blue', 'lavender']
+                button.settings-dropdown__accent-btn(
+                  data-accent-value=color
+                  role="menuitemradio"
+                  aria-checked=(color === 'mauve' ? 'true' : 'false')
+                  aria-label=color
+                )
+                  span.settings-dropdown__accent-dot(style=`background: var(--ctp-${color})`)
+
+      button.btn.btn--icon(data-mobile-nav-toggle aria-label=__('menu.toggle') aria-expanded="false")
+        svg(width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2")
+          line(x1="3" y1="6" x2="21" y2="6")
+          line(x1="3" y1="12" x2="21" y2="12")
+          line(x1="3" y1="18" x2="21" y2="18")

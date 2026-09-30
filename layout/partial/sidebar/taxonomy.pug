@@ -1,0 +1,12 @@
+if site.categories.length || site.tags.length
+  .card.card--flat.p-lg
+    if site.categories.length
+      h3.text-sm.text-secondary= __('page.category')
+      .sidebar__taxonomy-list.mt-sm
+        each category in site.categories.find({parent: {$exists: false}}).toArray()
+          a.sidebar__taxonomy-item(href=url_for(category.path))= category.name
+    if site.tags.length
+      h3.text-sm.text-secondary.mt-lg= __('page.tags')
+      .sidebar__taxonomy-list.mt-sm
+        each tag in site.tags.toArray()
+          a.sidebar__taxonomy-item(href=url_for(tag.path))= tag.name

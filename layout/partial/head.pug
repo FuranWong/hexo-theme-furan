@@ -1,0 +1,22 @@
+meta(charset="utf-8")
+meta(name="viewport" content="width=device-width, initial-scale=1")
+meta(name="theme-color" content="#eff1f5")
+
+title
+  if page.title
+    = page.title + ' | ' + config.title
+  else
+    = config.title
+
+if theme.favicon
+  link(rel="icon" href=url_for(theme.favicon))
+
+if theme.rss
+  link(rel="alternate" href=url_for(theme.rss) title=config.title type="application/atom+xml")
+
+link(rel="stylesheet" href=url_for('css/main.css'))
+
+link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css")
+
+if theme.giscus && theme.giscus.enable
+  link(rel="stylesheet" href="https://giscus.app/default.css")
