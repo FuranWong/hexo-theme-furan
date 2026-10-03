@@ -31,6 +31,17 @@ comment:
   title: Comments
   placeholder: Leave a comment
 
+sidebar:
+  announcement: Announcement
+  recent_posts: Recent Posts
+  archives: Archives
+  site_info: Site Info
+  articles: articles
+  last_updated: Last Updated
+  no_title: Untitled
+  no_tags: No tags yet
+  no_categories: No categories yet
+
 theme:
   light: Light
   dark: Dark

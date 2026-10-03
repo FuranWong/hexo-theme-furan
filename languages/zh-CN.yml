@@ -31,6 +31,17 @@ comment:
   title: 评论
   placeholder: 来都来了，说点什么吧
 
+sidebar:
+  announcement: 公告
+  recent_posts: 最新文章
+  archives: 归档
+  site_info: 网站信息
+  articles: 篇
+  last_updated: 最近更新
+  no_title: 无标题
+  no_tags: 暂无标签
+  no_categories: 暂无分类
+
 theme:
   light: 浅色
   dark: 暗色

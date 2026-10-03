@@ -12,6 +12,7 @@
 @import 'atoms/link.css';
 
 @import 'components/header.css';
+@import 'components/hero.css';
 @import 'components/sidebar.css';
 @import 'components/post-list.css';
 @import 'components/post-detail.css';

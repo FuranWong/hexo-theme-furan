@@ -1,0 +1,12 @@
+if site.categories.length
+  -
+    var tagAccents = ['rosewater','flamingo','pink','mauve','red','maroon','peach','yellow','green','teal','sky','sapphire','blue','lavender']
+  .card.card--flat.p-lg
+    h3.sidebar__section-title
+      i.fas.fa-folder.mr-sm
+      span= __('page.category')
+    .sidebar__taxonomy-list
+      each category in site.categories.find({parent: {$exists: false}}).toArray()
+        a.sidebar__taxonomy-item(class='tax-c-' + Math.floor(Math.random() * 14) href=url_for(category.path))
+          span= category.name
+          span.sidebar__taxonomy-count= category.length

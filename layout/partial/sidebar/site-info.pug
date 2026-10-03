@@ -1,0 +1,21 @@
+.card.card--flat.p-lg
+  h3.sidebar__section-title
+    i.fas.fa-chart-bar.mr-sm
+    span= __('sidebar.site_info')
+  .sidebar__site-info.mt-sm
+    .sidebar__site-info-item
+      span.sidebar__site-info-label= __('sidebar.articles')
+      span.sidebar__site-info-value= site.posts.length
+    if site.categories.length
+      .sidebar__site-info-item
+        span.sidebar__site-info-label= __('page.category')
+        span.sidebar__site-info-value= site.categories.length
+    if site.tags.length
+      .sidebar__site-info-item
+        span.sidebar__site-info-label= __('page.tags')
+        span.sidebar__site-info-value= site.tags.length
+    if site.posts.length
+      - var lastPost = site.posts.sort('date', -1).toArray()[0]
+      .sidebar__site-info-item
+        span.sidebar__site-info-label= __('sidebar.last_updated')
+        span.sidebar__site-info-value.text-sm= date(lastPost.date, 'YYYY-MM-DD')

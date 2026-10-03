@@ -1,0 +1,10 @@
+if site.posts.length
+  .card.card--flat.p-lg
+    h3.sidebar__section-title
+      i.fas.fa-history.mr-sm
+      span= __('sidebar.recent_posts')
+    .sidebar__recent-posts.mt-sm
+      each post in site.posts.sort('date', -1).limit(5).toArray()
+        a.sidebar__recent-post(href=url_for(post.path))
+          span.sidebar__recent-post-title.truncate= post.title || __('sidebar.no_title')
+          span.sidebar__recent-post-date= date(post.date, 'MM-DD')

@@ -96,3 +96,9 @@ wallpaper:
 # ===============
 favicon: /favicon.png
 rss: /atom.xml
+
+# ===============
+# Sidebar
+# ===============
+sidebar:
+  announcement: 'Test'

@@ -1,0 +1,15 @@
+if site.posts.length
+  .card.card--flat.p-lg
+    h3.sidebar__section-title
+      i.fas.fa-box-archive.mr-sm
+      span= __('sidebar.archives')
+    .sidebar__archive-list
+      -
+        var years = []
+        site.posts.each(function(post) {
+          var y = post.date.year()
+          if (years.indexOf(y) === -1) years.push(y)
+        })
+      each year in years.sort(function(a, b) { return b - a })
+        a.sidebar__archive-item(href=url_for(config.archive_dir + '/' + year + '/'))
+          span= year

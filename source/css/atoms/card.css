@@ -19,3 +19,10 @@
 .card--compact {
   padding: var(--space-md);
 }
+
+.card--acrylic {
+  background: color-mix(in srgb, var(--bg-card) 75%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: color-mix(in srgb, var(--border-light) 60%, transparent);
+}

@@ -19,6 +19,7 @@ body {
 .layout__sidebar {
   flex-shrink: 0;
   width: var(--sidebar-width);
+  padding-bottom: var(--space-2xl);
 }
 
 .layout__main {

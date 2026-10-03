@@ -1,0 +1,16 @@
+---
+layout: layout
+---
+article.card.card--acrylic.p-lg
+  h1.post-detail__title= page.title || __('tags')
+  .mt-lg
+    if site.tags.length
+      -
+        var tagAccents = ['rosewater','flamingo','pink','mauve','red','maroon','peach','yellow','green','teal','sky','sapphire','blue','lavender']
+      .sidebar__taxonomy-list
+        each tag in site.tags.sort('name').toArray()
+          a.sidebar__taxonomy-item(class='tax-c-' + Math.floor(Math.random() * 14) href=url_for(tag.path))
+            span= tag.name
+            span.sidebar__taxonomy-count= tag.length
+    else
+      p.text-secondary= __('sidebar.no_tags')

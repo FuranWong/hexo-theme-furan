@@ -7,6 +7,9 @@ html(lang=config.language || 'en')
     include partial/header.pug
 
     .page-content
+      if is_home()
+        include partial/hero.pug
+
       .layout
         .layout__sidebar
           include partial/sidebar.pug

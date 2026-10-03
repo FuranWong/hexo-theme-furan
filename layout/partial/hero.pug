@@ -1,0 +1,8 @@
+.hero
+  .hero__inner
+    h1.hero__title= config.title
+    if config.subtitle
+      p.hero__subtitle= config.subtitle
+    .hero__poem(data-hero-poem)
+  .hero__scroll
+    i.fas.fa-chevron-down
